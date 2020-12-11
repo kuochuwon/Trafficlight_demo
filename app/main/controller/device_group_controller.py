@@ -35,6 +35,20 @@ response_status = {status.HTTP_200_OK: ret.get_code_full(ret.RET_OK),
                    status.HTTP_404_NOT_FOUND: ret.get_code_full(ret.RET_NOT_FOUND)}
 
 
+@api.route("/hello")
+class Hello(Resource):
+    @api.expect(_header, validate=True)
+    @api.doc(responses=response_status)
+    @jwt_required
+    def get(self):
+        """ show device lists """
+        response = "Hello world !!"
+        if not response:
+            raise NotFound(ret.http_resp(ret.RET_NOT_FOUND))
+
+        return response, status.HTTP_200_OK
+
+
 @api.route("/getall")
 class GetAll(Resource):
     @api.expect(_header, validate=True)
