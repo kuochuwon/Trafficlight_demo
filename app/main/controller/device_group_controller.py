@@ -39,7 +39,6 @@ response_status = {status.HTTP_200_OK: ret.get_code_full(ret.RET_OK),
 class Hello(Resource):
     @api.expect(_header, validate=True)
     @api.doc(responses=response_status)
-    @jwt_required
     def get(self):
         """ show device lists """
         response = "Hello world !!"
