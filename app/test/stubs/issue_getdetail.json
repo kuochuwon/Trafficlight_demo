@@ -1,0 +1,225 @@
+{
+    "ret_code": 0,
+    "ret_desc": "OK",
+    "issues": [
+        {
+            "id": "1",
+            "issue_no": "TX001",
+            "subject": "TX001 報修單",
+            "error_name": "其他",
+            "status": "NEW",
+            "device_id": "1",
+            "device_name": "testname_1",
+            "description": "抱抱抱修單",
+            "create_time": "2020-01-07T00:00:00+08:00",
+            "vendor_id": "1",
+            "report_from": "NEW",
+            "reporter": "大名",
+            "reporter_email": "@123",
+            "reporter_mobile": "0931",
+            "reporter_phone": "0988",
+            "issue_logs": [
+                {
+                    "issue_log_id": "1",
+                    "sequence": 1,
+                    "subject": "TX001 報修單之log (2)",
+                    "user_id": "2",
+                    "description": "issue log",
+                    "status_from": 1,
+                    "status_to": 2
+                },
+                {
+                    "issue_log_id": "2",
+                    "sequence": 2,
+                    "subject": "TX001 報修單之log (3)",
+                    "user_id": "2",
+                    "description": "issue log",
+                    "status_from": 2,
+                    "status_to": 3
+                },
+                {
+                    "issue_log_id": "3",
+                    "sequence": 3,
+                    "subject": "TX001 報修單之log (3)",
+                    "user_id": "2",
+                    "description": "issue log",
+                    "status_from": 3,
+                    "status_to": 3
+                },
+                {
+                    "issue_log_id": "4",
+                    "sequence": 4,
+                    "subject": "TX001 報修單之log (4)",
+                    "user_id": "2",
+                    "description": "issue log",
+                    "status_from": 3,
+                    "status_to": 4
+                },
+                {
+                    "issue_log_id": "5",
+                    "sequence": 5,
+                    "subject": "TX001 報修單之log (5)",
+                    "user_id": "2",
+                    "description": "issue log",
+                    "status_from": 4,
+                    "status_to": 5
+                },
+                {
+                    "issue_log_id": "6",
+                    "sequence": 6,
+                    "subject": "TX001 報修單之log (6)",
+                    "user_id": "2",
+                    "description": "issue log",
+                    "status_from": 5,
+                    "status_to": 6
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "issue_no": "TX002",
+            "subject": "TX002 報修單",
+            "error_name": "其他",
+            "status": "NEW",
+            "device_id": "1",
+            "device_name": "testname_1",
+            "description": "抱抱抱修單",
+            "create_time": "2020-01-07T00:00:00+08:00",
+            "vendor_id": "0",
+            "report_from": "NEW",
+            "reporter": "大名",
+            "reporter_email": "@123",
+            "reporter_mobile": "0931",
+            "reporter_phone": "0988",
+            "issue_logs": [
+                {
+                    "issue_log_id": "7",
+                    "sequence": 1,
+                    "subject": "TX002 報修單之log (2)",
+                    "user_id": "2",
+                    "description": "issue log",
+                    "status_from": 1,
+                    "status_to": 2
+                },
+                {
+                    "issue_log_id": "8",
+                    "sequence": 2,
+                    "subject": "TX002 報修單之log (3)",
+                    "user_id": "2",
+                    "description": "issue log",
+                    "status_from": 2,
+                    "status_to": 3
+                },
+                {
+                    "issue_log_id": "9",
+                    "sequence": 3,
+                    "subject": "TX002 報修單之log (3)",
+                    "user_id": "2",
+                    "description": "issue log",
+                    "status_from": 3,
+                    "status_to": 3
+                },
+                {
+                    "issue_log_id": "10",
+                    "sequence": 4,
+                    "subject": "TX002 報修單之log (4)",
+                    "user_id": "2",
+                    "description": "issue log",
+                    "status_from": 3,
+                    "status_to": 4
+                },
+                {
+                    "issue_log_id": "11",
+                    "sequence": 5,
+                    "subject": "TX002 報修單之log (5)",
+                    "user_id": "2",
+                    "description": "issue log",
+                    "status_from": 4,
+                    "status_to": 5
+                },
+                {
+                    "issue_log_id": "12",
+                    "sequence": 6,
+                    "subject": "TX002 報修單之log (6)",
+                    "user_id": "2",
+                    "description": "issue log",
+                    "status_from": 5,
+                    "status_to": 6
+                }
+            ]
+        },
+        {
+            "id": "3",
+            "issue_no": "TX003",
+            "subject": "TX003 報修單",
+            "error_name": "其他",
+            "status": "NEW",
+            "device_id": "1",
+            "device_name": "testname_1",
+            "description": "抱抱抱修單",
+            "create_time": "2020-01-07T00:00:00+08:00",
+            "vendor_id": "1",
+            "report_from": "NEW",
+            "reporter": "大名",
+            "reporter_email": "@123",
+            "reporter_mobile": "0931",
+            "reporter_phone": "0988",
+            "issue_logs": [
+                {
+                    "issue_log_id": "13",
+                    "sequence": 1,
+                    "subject": "TX003 報修單之log (2)",
+                    "user_id": "2",
+                    "description": "issue log",
+                    "status_from": 1,
+                    "status_to": 2
+                },
+                {
+                    "issue_log_id": "14",
+                    "sequence": 2,
+                    "subject": "TX003 報修單之log (3)",
+                    "user_id": "2",
+                    "description": "issue log",
+                    "status_from": 2,
+                    "status_to": 3
+                },
+                {
+                    "issue_log_id": "15",
+                    "sequence": 3,
+                    "subject": "TX003 報修單之log (3)",
+                    "user_id": "2",
+                    "description": "issue log",
+                    "status_from": 3,
+                    "status_to": 3
+                },
+                {
+                    "issue_log_id": "16",
+                    "sequence": 4,
+                    "subject": "TX003 報修單之log (4)",
+                    "user_id": "2",
+                    "description": "issue log",
+                    "status_from": 3,
+                    "status_to": 4
+                },
+                {
+                    "issue_log_id": "17",
+                    "sequence": 5,
+                    "subject": "TX003 報修單之log (5)",
+                    "user_id": "2",
+                    "description": "issue log",
+                    "status_from": 4,
+                    "status_to": 5
+                },
+                {
+                    "issue_log_id": "18",
+                    "sequence": 6,
+                    "subject": "TX003 報修單之log (6)",
+                    "user_id": "2",
+                    "description": "issue log",
+                    "status_from": 5,
+                    "status_to": 6
+                }
+            ]
+        }
+    ]
+}
