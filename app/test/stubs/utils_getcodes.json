@@ -1,0 +1,119 @@
+{
+    "ret_code": 0,
+    "ret_desc": "OK",
+    "codes_table": {
+        "issue_status": [
+            {
+                "id": "1",
+                "name": "new",
+                "display_name": "NEW",
+                "create_time": "2020-02-11T00:00:00+08:00",
+                "update_time": "2020-02-11T00:00:00+08:00"
+            },
+            {
+                "id": "2",
+                "name": "acknowledged",
+                "display_name": "ACKNOWLEDGED",
+                "create_time": "2020-02-11T00:00:00+08:00",
+                "update_time": "2020-02-11T00:00:00+08:00"
+            },
+            {
+                "id": "3",
+                "name": "assigned",
+                "display_name": "ASSIGNED",
+                "create_time": "2020-02-11T00:00:00+08:00",
+                "update_time": "2020-02-11T00:00:00+08:00"
+            },
+            {
+                "id": "4",
+                "name": "progress",
+                "display_name": "IN - PROGRESS",
+                "create_time": "2020-02-11T00:00:00+08:00",
+                "update_time": "2020-02-11T00:00:00+08:00"
+            },
+            {
+                "id": "5",
+                "name": "resolved",
+                "display_name": "RESOLVED",
+                "create_time": "2020-02-11T00:00:00+08:00",
+                "update_time": "2020-02-11T00:00:00+08:00"
+            },
+            {
+                "id": "6",
+                "name": "closed",
+                "display_name": "CLOSED",
+                "create_time": "2020-02-11T00:00:00+08:00",
+                "update_time": "2020-02-11T00:00:00+08:00"
+            }
+        ],
+        "issue_errorcode": [
+            {
+                "id": "7",
+                "name": "not_working",
+                "display_name": "\u71c8\u4e0d\u4eae",
+                "create_time": "2020-02-11T00:00:00+08:00",
+                "update_time": "2020-02-11T00:00:00+08:00"
+            },
+            {
+                "id": "8",
+                "name": "flashing_fault",
+                "display_name": "\u71c8\u9583\u720d",
+                "create_time": "2020-02-11T00:00:00+08:00",
+                "update_time": "2020-02-11T00:00:00+08:00"
+            },
+            {
+                "id": "9",
+                "name": "others",
+                "display_name": "\u5176\u4ed6",
+                "create_time": "2020-02-11T00:00:00+08:00",
+                "update_time": "2020-02-11T00:00:00+08:00"
+            }
+        ],
+        "report_from": [
+            {
+                "id": "10",
+                "name": "admin",
+                "display_name": "admin",
+                "create_time": "2020-02-11T00:00:00+08:00",
+                "update_time": "2020-02-11T00:00:00+08:00"
+            },
+            {
+                "id": "11",
+                "name": "anonymous",
+                "display_name": "anonymous",
+                "create_time": "2020-02-11T00:00:00+08:00",
+                "update_time": "2020-02-11T00:00:00+08:00"
+            },
+            {
+                "id": "12",
+                "name": "people",
+                "display_name": "people",
+                "create_time": "2020-02-11T00:00:00+08:00",
+                "update_time": "2020-02-11T00:00:00+08:00"
+            }
+        ],
+        "issue_priority": [
+            {
+                "id": "13",
+                "name": "normal",
+                "display_name": "\u666e\u901a",
+                "create_time": "2020-02-11T00:00:00+08:00",
+                "update_time": "2020-02-11T00:00:00+08:00"
+            },
+            {
+                "id": "14",
+                "name": "high",
+                "display_name": "\u901f\u4ef6",
+                "create_time": "2020-02-11T00:00:00+08:00",
+                "update_time": "2020-02-11T00:00:00+08:00"
+            },
+            {
+                "id": "15",
+                "name": "urgent",
+                "display_name": "\u6700\u901f\u4ef6",
+                "create_time": "2020-02-11T00:00:00+08:00",
+                "update_time": "2020-02-11T00:00:00+08:00"
+            }
+        ]
+    }
+}

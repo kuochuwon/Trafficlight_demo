@@ -1,0 +1,50 @@
+{
+    "ret_code": 0,
+    "ret_desc": "OK",
+    "device_groups": [
+        {
+            "id": "1",
+            "name": "testgroup_1",
+            "display_name": "test_streetlight",
+            "comment": "",
+            "create_time": "2019-12-18T00:00:00+08:00",
+            "update_time": "2019-12-18T00:00:00+08:00",
+            "user_groups": [
+                "2",
+                "3",
+                "4",
+                "5"
+            ],
+            "devices": [
+                "1",
+                "2",
+                "3",
+                "4"
+            ],
+            "schedules_id": "1",
+            "schedules_name": "schedule_0"
+        },
+        {
+            "id": "2",
+            "name": "testgroup_2",
+            "display_name": "test_streetlight",
+            "comment": "",
+            "create_time": "2019-12-18T00:00:00+08:00",
+            "update_time": "2019-12-18T00:00:00+08:00",
+            "user_groups": [
+                "6",
+                "7",
+                "8",
+                "9"
+            ],
+            "devices": [
+                "5",
+                "6",
+                "7",
+                "8"
+            ],
+            "schedules_id": "1",
+            "schedules_name": "schedule_0"
+        }
+    ]
+}

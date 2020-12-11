@@ -1,0 +1,10 @@
+{
+	"ret_code": 0,
+	"ret_desc": "OK",
+	"events": [
+        {
+            "id": "1",
+            "ack": "已讀"
+        }
+	]
+}
