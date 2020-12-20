@@ -1,8 +1,8 @@
-"""init
+"""remote db
 
-Revision ID: 31df2daddc1f
-Revises: 74f688bb8c75
-Create Date: 2020-10-22 21:00:46.566921
+Revision ID: 99c882a2b3d4
+Revises: 34871cab963b
+Create Date: 2020-12-16 20:11:21.148679
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '31df2daddc1f'
-down_revision = '74f688bb8c75'
+revision = '99c882a2b3d4'
+down_revision = '34871cab963b'
 branch_labels = None
 depends_on = None
 
@@ -47,7 +47,7 @@ def upgrade():
     )
     op.create_table('sd30_device_models',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
-    sa.Column('name', sa.String(length=20), nullable=True, comment='AcBel part no'),
+    sa.Column('name', sa.String(length=20), nullable=True, comment='Traffic Light part no'),
     sa.Column('display_name', sa.String(length=50), nullable=True, comment='Part description + specification'),
     sa.Column('comment', sa.Text(), nullable=True, comment='Comment'),
     sa.Column('create_time', sa.DateTime(), server_default=sa.text('now()'), nullable=True, comment='Create time'),
@@ -130,7 +130,7 @@ def upgrade():
     sa.Column('update_time', sa.DateTime(), server_default=sa.text('now()'), nullable=True, comment='Update time'),
     sa.Column('cust_id', sa.Integer(), nullable=True, comment='Customer id'),
     sa.Column('status', sa.Integer(), server_default='0', nullable=True, comment='Device status flag. bit 0: warning, bit 1: error'),
-    sa.Column('model_id', sa.Integer(), server_default='0', nullable=True, comment='AcBel model/part no'),
+    sa.Column('model_id', sa.Integer(), server_default='0', nullable=True, comment='Traffic Light model/part no'),
     sa.Column('serial_no', sa.String(length=50), nullable=False, comment='Serial No'),
     sa.ForeignKeyConstraint(['cust_id'], ['sd10_customers.id'], ),
     sa.ForeignKeyConstraint(['model_id'], ['sd30_device_models.id'], ),
@@ -147,7 +147,7 @@ def upgrade():
     sa.Column('update_time', sa.DateTime(), server_default=sa.text('now()'), nullable=True, comment='Update time'),
     sa.Column('cust_id', sa.Integer(), nullable=True, comment='Customer id'),
     sa.Column('status', sa.Integer(), server_default='0', nullable=True, comment='Device status flag. bit 0: warning, bit 1: error'),
-    sa.Column('model_id', sa.Integer(), server_default='0', nullable=True, comment='AcBel model/part no'),
+    sa.Column('model_id', sa.Integer(), server_default='0', nullable=True, comment='Traffic Light model/part no'),
     sa.Column('serial_no', sa.String(length=50), nullable=False, comment='Serial No'),
     sa.ForeignKeyConstraint(['cust_id'], ['sd10_customers.id'], ),
     sa.ForeignKeyConstraint(['model_id'], ['sd30_device_models.id'], ),
@@ -240,7 +240,7 @@ def upgrade():
     sa.Column('comment', sa.Text(), nullable=True, comment='Comment'),
     sa.Column('create_time', sa.DateTime(), server_default=sa.text('now()'), nullable=True, comment='Create time'),
     sa.Column('update_time', sa.DateTime(), server_default=sa.text('now()'), nullable=True, comment='Update time'),
-    sa.Column('dev_type', sa.Integer(), server_default='0', nullable=True, comment='Device type: 0: unknown, 1: lighting'),
+    sa.Column('dev_type', sa.Integer(), server_default='0', nullable=True, comment='Device type: 0: unknown, 1: traffic light, 2: large scale devices'),
     sa.Column('cust_id', sa.Integer(), nullable=True, comment='Customer id'),
     sa.Column('vendor_id', sa.Integer(), nullable=True, comment='Vendor id'),
     sa.Column('status', sa.Integer(), server_default='0', nullable=True, comment='Device status flag. bit 0: warning, bit 1: error'),
