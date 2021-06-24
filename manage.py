@@ -52,11 +52,11 @@ def add_sample():
     seed_sample.seed_ntpc()
 
 
-@manager.command
-def run():
-    app.run()
+# @manager.command
+# def run():
+#     app.run()
 
 
 if __name__ == "__main__":
-    manager.run()
-    # app.run()
+    # manager.run()
+    app.run()
