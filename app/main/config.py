@@ -55,10 +55,20 @@ class DevelopmentConfig(Config):
     Config.SQLALCHEMY_ENGINE_OPTIONS["echo_pool"] = False
 
 
+class HerokuConfig(Config):
+    DEBUG = True
+    TESTING = False
+    SQLALCHEMY_DATABASE_URI = os.getenv("HEROKU_DATABASE_URL")
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    Config.SQLALCHEMY_ENGINE_OPTIONS["echo"] = False
+    Config.SQLALCHEMY_ENGINE_OPTIONS["echo_pool"] = False
+
+
 __config_list = dict(
     development=DevelopmentConfig,
     testing=TestingConfig,
-    production=ProductionConfig
+    production=ProductionConfig,
+    heroku=HerokuConfig
 )
 
 

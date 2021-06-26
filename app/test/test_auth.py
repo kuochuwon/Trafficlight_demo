@@ -198,49 +198,6 @@ class TestAuth(BaseTestCase):
         self.assert401(resp)
         self.assertEqual(data, {"ret_code": 2008, "ret_desc": "API access authorization fail"})
 
-    def test_status_privilege_authorization(self):
-        # take dispatching update as example
-        FakeDataCreation().insert_code_spec()
-        vendor_insertion()
-        admin_user_insertion()
-        FakeDataCreation().user_for_issue().insert_device_group(1, 0).insert_device(1)\
-            .insert_issue_cust1(5).insert_issue_log()
-
-        token = self.login("testcust", "admin")
-        update_accept = dispatching_update_input()
-        resp = self.client.put("/api/v1/issue/update",
-                               data=json.dumps(update_accept),
-                               content_type="application/json",
-                               headers={"Authorization": f"Bearer {token}"})
-
-        stmt = db.select([sdIssue.status_id]).where(sdIssue.id == 1)
-        new_status = db.session.execute(stmt).fetchone()[0]
-        self.assert200(resp)
-        self.assertEqual(new_status, 3)
-
-    def test_status_privilege_authorization_bad(self):
-        # take account as example
-        FakeDataCreation().insert_code_spec()
-        vendor_insertion()
-        admin_user_insertion()
-        FakeDataCreation().user_for_issue().insert_device_group(1, 0).insert_device(1)\
-            .insert_issue_cust1(5).insert_issue_log()
-        test_auth_add_new_role()
-
-        # TODO this is example of user_name != "admin"
-        token = self.login()
-        update_accept = dispatching_update_input()
-        resp = self.client.put("/api/v1/issue/update",
-                               data=json.dumps(update_accept),
-                               content_type="application/json",
-                               headers={"Authorization": f"Bearer {token}"})
-        logger.debug(resp.status)
-        data = json.loads(resp.data.decode())
-        self.assert401(resp)
-        self.assertEqual(data, {"ret_code": 2003,
-                                "ret_desc": "Invalid user name",
-                                "ret_hint": "user_name received: testuser"})
-
 
 if __name__ == "__main__":
     unittest.main()
