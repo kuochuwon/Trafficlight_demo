@@ -4,20 +4,12 @@ import unittest
 from flask_api import status
 from flask_jwt_extended import get_raw_jwt
 
-from app.main import db
-from app.main.model.issue import sdIssue
 from app.main.log import logger
 from app.main.model.blacklist import sdBlacklistToken
 from app.main.service import ret
 from app.test.base import BaseTestCase
-from app.test.stubs.data import FakeDataCreation
 
-from app.test.stubs.pseudo_device_creating import (dispatching_update_input,
-                                                   admin_user_insertion,
-                                                   vendor_insertion,
-                                                   user_getall_ref_json,
-                                                   user_insertion,
-                                                   test_auth_add_new_role)
+from app.test.stubs.pseudo_device_creating import user_getall_ref_json, user_insertion
 
 
 class TestAuth(BaseTestCase):

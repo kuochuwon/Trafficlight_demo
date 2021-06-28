@@ -6,6 +6,8 @@ from flask_testing import TestCase
 
 from manage import app
 
+# TODO 此處的RE要搞清楚
+
 
 class TestDevelopmentConfig(TestCase):
     def create_app(self):
@@ -26,7 +28,9 @@ class TestTestingConfig(TestCase):
         return app
 
     def test_app_is_testing(self):
-        db_pattern = "^(postgresql\\+psycopg2).*(/sd_db_test)$"
+        db_pattern = "^(postgresql\\+psycopg2).*(/Unittest)$"
+        print(db_pattern)
+        print(app.config["SQLALCHEMY_DATABASE_URI"])
         self.assertFalse(current_app is None)
         self.assertTrue(bool(re.match(db_pattern, app.config["SQLALCHEMY_DATABASE_URI"])))
         self.assertFalse(app.config["DEBUG"])
@@ -35,11 +39,14 @@ class TestTestingConfig(TestCase):
 
 class TestProductionConfig(TestCase):
     def create_app(self):
-        app.config.from_object("app.main.config.ProductionConfig")
+        app.config.from_object("app.main.config.HerokuConfig")
         return app
 
-    def test_app_is_production(self):
-        db_pattern = "^(postgresql\\+psycopg2).*(/sd_db)$"
+    def test_app_is_heroku_production(self):
+        # db_pattern = "^(postgres\\).*(/*compute-1.amazonaws.com)$"
+        db_pattern = "^(postgres).*(/ddn25333pg00bp)$"
+        print(db_pattern)
+        print(app.config["SQLALCHEMY_DATABASE_URI"])
         self.assertFalse(current_app is None)
         self.assertTrue(bool(re.match(db_pattern, app.config["SQLALCHEMY_DATABASE_URI"])))
         self.assertFalse(app.config["DEBUG"])

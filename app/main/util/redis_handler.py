@@ -5,8 +5,10 @@ from app.main.config import Config
 from app.main.log import logger
 from app.main.constant import Constant
 
+# __redis_pool = redis.ConnectionPool(host=Config.REDIS_SERVER, port=Config.REDIS_PORT,
+#                                     password='0e6dbc5f3f2aa6aeca6aac1146895061', decode_responses=True)
 __redis_pool = redis.ConnectionPool(host=Config.REDIS_SERVER, port=Config.REDIS_PORT,
-                                    password='0e6dbc5f3f2aa6aeca6aac1146895061', decode_responses=True)
+                                    decode_responses=True)
 __redis = redis.Redis(connection_pool=__redis_pool)
 __redis_expire = Constant.REDIS_EXPIRE_TIMES
 

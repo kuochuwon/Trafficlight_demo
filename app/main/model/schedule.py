@@ -1,18 +1,14 @@
 from sqlalchemy.sql import func
 
 from app.main import db
-from app.main.model.schedule_group import sdScheduleGroup
 
 
-class sdScheduleItem(db.Model):
-    __tablename__ = "sd42_schedule_items"
+class sdSchedule(db.Model):
+    __tablename__ = "sd42_schedule"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    day = db.Column(db.String(1), comment="Week Day, 0~6")
+    counting_time = db.Column(db.Integer, comment="紅綠燈從紅燈變為綠燈的等待時間，單位為秒")
     create_time = db.Column(db.DateTime, server_default=func.now(), comment="Create time")
     update_time = db.Column(db.DateTime, server_default=func.now(), comment="Update time")
-    time = db.Column(db.String(5), comment="Time, SR+0, SS+0, 19:00")
-    dimming = db.Column(db.Integer, comment="Dimming")
-    schedule_group_id = db.Column(db.Integer, db.ForeignKey(sdScheduleGroup.id), comment="Schedule Group id")
     cust_id = db.Column(db.Integer, db.ForeignKey("sd10_customers.id"), comment="Customer id")
 
     def __repr__(self):

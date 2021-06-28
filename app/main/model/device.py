@@ -4,6 +4,7 @@ from app.main import db
 from app.main.model.controller import sdController
 from app.main.model.customer import sdCustomer
 from app.main.model.led import sdLed
+from app.main.model.schedule import sdSchedule
 
 
 class sdDevice(db.Model):
@@ -19,8 +20,8 @@ class sdDevice(db.Model):
     cust_id = db.Column(db.Integer, db.ForeignKey(sdCustomer.id), comment="Customer id")
     vendor_id = db.Column(db.Integer, db.ForeignKey(sdCustomer.id), comment="Vendor id")
     status = db.Column(db.Integer, server_default="0", comment="Device status flag. bit 0: warning, bit 1: error")
-    dimming = db.Column(db.Integer, comment="Device dimming. 0~100")
     power_status = db.Column(db.Integer, comment="Device power status. null: unknown, 0: off, 1: on")
+    schedule_id = db.Column(db.Integer, db.Foreignkey(sdSchedule.id), comment="Current schedule")
     device_group_id = db.Column(db.Integer, db.ForeignKey("sd22_device_groups.id"),
                                 comment="Device group id, null means ungroup")
     controller_id = db.Column(db.Integer, db.ForeignKey(sdController.id), comment="Controller id")
@@ -30,9 +31,6 @@ class sdDevice(db.Model):
     wgs_y = db.Column(db.Float, comment="GPS Y")
     address = db.Column(db.String(100), comment="Address")
 
-    issues = db.relationship("sdIssue", backref="device", lazy="dynamic")
-    event_logs = db.relationship("sdEventLog", backref="device", lazy="dynamic")
-    commands = db.relationship("sdCommandDevice", backref="device", lazy="dynamic")
     device_info = db.relationship("sdDeviceInfo", uselist=False, backref="device")
     __table_args__ = (db.UniqueConstraint("cust_id", "name"),)
 
