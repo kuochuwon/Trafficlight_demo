@@ -1,14 +1,15 @@
+import os
 import json
 import redis
 
-from app.main.config import Config
+from app.main.config import get_config
 from app.main.log import logger
 from app.main.constant import Constant
 
-# __redis_pool = redis.ConnectionPool(host=Config.REDIS_SERVER, port=Config.REDIS_PORT,
-#                                     password='0e6dbc5f3f2aa6aeca6aac1146895061', decode_responses=True)
-__redis_pool = redis.ConnectionPool(host=Config.REDIS_SERVER, port=Config.REDIS_PORT,
-                                    decode_responses=True)
+curr_config = get_config(os.getenv("FLASK_CONFIG"))
+
+__redis_pool = redis.ConnectionPool(host=curr_config.REDIS_SERVER, port=curr_config.REDIS_PORT,
+                                    password=curr_config.REDIS_PASS, decode_responses=True)
 __redis = redis.Redis(connection_pool=__redis_pool)
 __redis_expire = Constant.REDIS_EXPIRE_TIMES
 

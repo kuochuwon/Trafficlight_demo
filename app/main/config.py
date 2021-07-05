@@ -20,10 +20,10 @@ class Config:
         "max_overflow": int(os.getenv("DATABASE_MAX_OVERFLOW") or "5"),
     }
 
-    REDIS_SERVER = os.getenv("REDIS_SERVER")
-    REDIS_PORT = os.getenv("REDIS_PORT")
+    # REDIS_SERVER = ""
+    # REDIS_PORT = ""
+    # REDIS_PASS = ""
 
-    #
     LOG_FILE = os.getenv("LOG_FILE") or "log/server.log"
     path = Path(os.path.dirname(LOG_FILE))
     if not (path.exists() and path.is_dir()):
@@ -53,6 +53,9 @@ class DevelopmentConfig(Config):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     Config.SQLALCHEMY_ENGINE_OPTIONS["echo"] = False
     Config.SQLALCHEMY_ENGINE_OPTIONS["echo_pool"] = False
+    REDIS_SERVER = os.getenv("DEV_REDIS_SERVER")
+    REDIS_PORT = os.getenv("DEV_REDIS_PORT")
+    REDIS_PASS = os.getenv("DEV_REDIS_PASS")
 
 
 class HerokuConfig(Config):
@@ -62,6 +65,9 @@ class HerokuConfig(Config):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     Config.SQLALCHEMY_ENGINE_OPTIONS["echo"] = False
     Config.SQLALCHEMY_ENGINE_OPTIONS["echo_pool"] = False
+    REDIS_SERVER = os.getenv("HEROKU_REDIS_SERVER")
+    REDIS_PORT = os.getenv("HEROKU_REDIS_PORT")
+    REDIS_PASS = os.getenv("HEROKU_REDIS_PASS")
 
 
 __config_list = dict(
