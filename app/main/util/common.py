@@ -11,7 +11,7 @@ from app.main.log import logger
 from app.main.service import ret
 from app.main.model.customer import sdCustomer
 from app.main.model.user_group import sdUserGroup
-from app.main.model.issue import sdIssue
+# from app.main.model.issue import sdIssue
 from app.main.constant import Constant
 
 
@@ -97,27 +97,27 @@ def check_access_authority(f):
     return wrapper
 
 
-def check_status_authority(f):
-    def wrapper(*args, **kargs):
-        """content of *args
-        :param: ((1,),
-                [{'id': '1', 'assignee_id': '2', 'description': '狀態轉換', 'plan_time': '2020-02-28'}], 3, '2', 'admin')
-        """
+# def check_status_authority(f):
+#     def wrapper(*args, **kargs):
+#         """content of *args
+#         :param: ((1,),
+#                 [{'id': '1', 'assignee_id': '2', 'description': '狀態轉換', 'plan_time': '2020-02-28'}], 3, '2', 'admin')
+#         """
 
-        user_id, status_to, user_name = args[3], args[2], args[4]
-        cust_id, issue_id = args[0][0], args[1][0].get("id")
+#         user_id, status_to, user_name = args[3], args[2], args[4]
+#         cust_id, issue_id = args[0][0], args[1][0].get("id")
 
-        if user_name != Constant.ADMIN:
-            raise Unauthorized(ret.http_resp(ret.RET_AUTH_NO_USER, f"user_name received: {user_name}"))
+#         if user_name != Constant.ADMIN:
+#             raise Unauthorized(ret.http_resp(ret.RET_AUTH_NO_USER, f"user_name received: {user_name}"))
 
-        # need to determine whether current issue is None
-        current_issue = sdIssue.getdetail(cust_id, [issue_id], [Constant.SYSTEM_ADMIN])
-        status_from = str(current_issue[0].status_id)
-        accessable_status = sdUserGroup.give_user_id_get_auths(user_id, 1, cust_id)
-        db.session.close()
+#         # need to determine whether current issue is None
+#         current_issue = sdIssue.getdetail(cust_id, [issue_id], [Constant.SYSTEM_ADMIN])
+#         status_from = str(current_issue[0].status_id)
+#         accessable_status = sdUserGroup.give_user_id_get_auths(user_id, 1, cust_id)
+#         db.session.close()
 
-        if (status_from, status_to) in accessable_status:
-            return f(*args, **kargs)
-        else:
-            raise Unauthorized(ret.http_resp(ret.RET_AUTHO_STATUS_FAIL))
-    return wrapper
+#         if (status_from, status_to) in accessable_status:
+#             return f(*args, **kargs)
+#         else:
+#             raise Unauthorized(ret.http_resp(ret.RET_AUTHO_STATUS_FAIL))
+#     return wrapper

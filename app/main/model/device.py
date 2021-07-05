@@ -4,7 +4,6 @@ from app.main import db
 from app.main.model.controller import sdController
 from app.main.model.customer import sdCustomer
 from app.main.model.led import sdLed
-from app.main.model.schedule import sdSchedule
 
 
 class sdDevice(db.Model):
@@ -16,12 +15,12 @@ class sdDevice(db.Model):
     create_time = db.Column(db.DateTime, server_default=func.now(), comment="Create time")
     update_time = db.Column(db.DateTime, server_default=func.now(), comment="Update time")
     dev_type = db.Column(db.Integer, server_default="0",
-                         comment="Device type: 0: unknown, 1: traffic light, 2: large scale devices")
+                         comment="Device type: 0: unknown, 1: traffic light, 2: others")
     cust_id = db.Column(db.Integer, db.ForeignKey(sdCustomer.id), comment="Customer id")
     vendor_id = db.Column(db.Integer, db.ForeignKey(sdCustomer.id), comment="Vendor id")
-    status = db.Column(db.Integer, server_default="0", comment="Device status flag. bit 0: warning, bit 1: error")
+    status = db.Column(db.Integer, server_default="0",
+                       comment="Device status flag(bit).  0: warning, bit 1: error，可持續新增")
     power_status = db.Column(db.Integer, comment="Device power status. null: unknown, 0: off, 1: on")
-    schedule_id = db.Column(db.Integer, db.Foreignkey(sdSchedule.id), comment="Current schedule")
     device_group_id = db.Column(db.Integer, db.ForeignKey("sd22_device_groups.id"),
                                 comment="Device group id, null means ungroup")
     controller_id = db.Column(db.Integer, db.ForeignKey(sdController.id), comment="Controller id")

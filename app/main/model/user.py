@@ -18,10 +18,6 @@ class sdUser(db.Model):
     email = db.Column(db.String(100), comment="Email")
     telephone = db.Column(db.String(30), comment="Telephone number")
     line_id = db.Column(db.String(30), comment="LINE id")
-
-    issue_logs = db.relationship("sdIssueLog", backref="user", lazy="dynamic")
-    issues = db.relationship("sdIssue", backref="user", lazy="dynamic")
-
     __table_args__ = (db.UniqueConstraint("cust_id", "name"),)
 
     def __repr__(self):

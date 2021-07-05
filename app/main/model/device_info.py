@@ -18,7 +18,6 @@ class sdDeviceInfo(db.Model):
     pf = db.Column(db.Float, comment="Power factor")
     power = db.Column(db.Float, comment="Power value")
     temperature = db.Column(db.Float, comment="Temperature")
-    lumming = db.Column(db.Float, comment="Lumming")
 
     __table_args__ = (db.UniqueConstraint("cust_id", "device_id"),)
 

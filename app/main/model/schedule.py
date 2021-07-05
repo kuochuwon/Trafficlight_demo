@@ -13,8 +13,7 @@ class sdSchedule(db.Model):
 
     def __repr__(self):
         return (
-            f"<sdScheduleItem id={self.id}/day={self.day}/time={self.time}"
-            f"/dimming={self.dimming}/schedule_group_id={self.schedule_group_id}>"
+            f"<sdSchedule id={self.id}"
         )
 
     @staticmethod
@@ -23,7 +22,7 @@ class sdSchedule(db.Model):
         for days in days_list:
             hour_list = list(schedule_items[days].items())
             for hour_dimm in hour_list:
-                obj = sdScheduleItem()
+                obj = sdSchedule()
                 obj.cust_id = cust_id
                 obj.day = days
                 obj.time = hour_dimm[0]

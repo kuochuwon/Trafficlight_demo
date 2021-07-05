@@ -28,12 +28,10 @@ def get_geojson_from_sql_results(results):  # the contents here should be same w
                        "status": status,
                        "power_status": power_status,
                        "address": address,
-                       "dimming": dimming,
-                       "dimming_level": dimming_convert(dimming),
                        "group_name": group_name,
                        "group_display_name": group_display_name
                        }}
-        for device_id, name, display_name, comment, status, power_status, dimming, wgs_x, wgs_y, address,
+        for device_id, name, display_name, comment, status, power_status, wgs_x, wgs_y, address,
         group_name, group_display_name in results]
 
     logger.debug("success for generate GeoJSON data.")

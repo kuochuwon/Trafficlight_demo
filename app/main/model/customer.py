@@ -13,20 +13,15 @@ class sdCustomer(db.Model):
     create_time = db.Column(db.DateTime, nullable=False, server_default=func.now(), comment="Create time")
     update_time = db.Column(db.DateTime, nullable=False, server_default=func.now(), comment="Update time")
     cust_id = db.Column(db.Integer, db.ForeignKey("sd10_customers.id"), comment="Vendor of customer")
-    issue_namespace = db.Column(db.String(50), nullable=False,
-                                server_default="CUSTOM-{datetime:%Y%m%d}-{serial_no:05d}",
-                                comment="Issue number namespace")
 
     vendors = db.relationship("sdCustomer", lazy="dynamic")
     users = db.relationship("sdUser", backref="cust", lazy="dynamic")
     controllers = db.relationship("sdController", backref="cust", lazy="dynamic")
     leds = db.relationship("sdLed", backref="cust", lazy="dynamic")
     device_groups = db.relationship("sdDeviceGroup", backref="cust", lazy="dynamic")
-    schedule_groups = db.relationship("sdScheduleGroup", backref="cust", lazy="dynamic")
-    schedule_items = db.relationship("sdScheduleItem", backref="cust", lazy="dynamic")
+    schedules = db.relationship("sdSchedule", backref="cust", lazy="dynamic")
     codes = db.relationship("sdCode", backref="cust", lazy="dynamic")
     user_groups = db.relationship("sdUserGroup", backref="cust", lazy="dynamic")
-    serial_number = db.relationship("sdSerialNumber", backref="cust", lazy="dynamic")
     status_privilege = db.relationship("sdStatusPrivilege", backref="cust", lazy="dynamic")
     device_info = db.relationship("sdDeviceInfo", backref="cust", lazy="dynamic")
 
@@ -34,11 +29,6 @@ class sdCustomer(db.Model):
         "sdDevice", foreign_keys="sdDevice.cust_id", backref="cust", lazy="dynamic")
     vendor_devices = db.relationship(
         "sdDevice", foreign_keys="sdDevice.vendor_id", backref="vendor", lazy="dynamic")
-
-    cust_issue = db.relationship(
-        "sdIssue", foreign_keys="sdIssue.cust_id", backref="cust", lazy="dynamic")
-    vendor_issue = db.relationship(
-        "sdIssue", foreign_keys="sdIssue.vendor_id", backref="vendor", lazy="dynamic")
 
     def __repr__(self):
         return f"<sdCustomer id={self.id}/name={self.name}/display_name={self.display_name}>"

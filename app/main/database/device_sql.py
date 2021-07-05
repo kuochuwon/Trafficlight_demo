@@ -5,7 +5,7 @@ from sqlalchemy.sql import text
 sql_get_all_device = """
     SELECT
         sd21.id, sd21.name, sd21.display_name, sd21.comment,
-        sd21.status, sd21.power_status, sd21.dimming, sd21.wgs_x, sd21.wgs_y, sd21.address, sd22_device_groups.name,
+        sd21.status, sd21.power_status, sd21.wgs_x, sd21.wgs_y, sd21.address, sd22_device_groups.name,
         sd22_device_groups.display_name
     FROM
         sd21_devices AS sd21

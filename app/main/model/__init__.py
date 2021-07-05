@@ -1,14 +1,8 @@
 from app.main.model.code import sdCode  # noqa: F401
-from app.main.model.command import sdCommand  # noqa: F401
-from app.main.model.command_device import sdCommandDevice  # noqa: F401
-from app.main.model.event_log import sdEventLog  # noqa: F401
-from app.main.model.issue import sdIssue  # noqa: F401
-from app.main.model.issue_log import sdIssueLog  # noqa: F401
 from app.main.model.privileges import sdPrivilege  # noqa: F401
 from app.main.model.roles import sdRole  # noqa: F401
-from app.main.model.schedule_item import sdScheduleItem  # noqa: F401
 from app.main.model.status_privilege import sdStatusPrivilege  # noqa: F401
 from app.main.model.user import sdUser  # noqa: F401
 from app.main.model.user_group import sdUserGroup  # noqa: F401
-from app.main.model.today_schedule import sdTodaySchedule  # noqa: F401
-from app.main.model.device_info import sdDeviceInfo # noqa: F401
+from app.main.model.device_info import sdDeviceInfo  # noqa: F401
+from app.main.model.schedule import sdSchedule  # noqa: F401

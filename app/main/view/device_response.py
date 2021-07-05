@@ -130,8 +130,6 @@ def response_get_detail(cust_id, device_list):
                                wgs_x=device.wgs_x,
                                wgs_y=device.wgs_y,
                                address=device.address,
-                               dimming=device.dimming,
-                               dimming_level=dimming_convert(device.dimming),
                                device_group=device_group,
                                controller=controller,
                                led=led))

@@ -17,11 +17,10 @@ class sdDeviceGroup(db.Model):
     create_time = db.Column(db.DateTime, server_default=func.now(), comment="Create time")
     update_time = db.Column(db.DateTime, server_default=func.now(), comment="Update time")
     cust_id = db.Column(db.Integer, db.ForeignKey("sd10_customers.id"), comment="Customer id")
-    schedule_id = db.Column(db.Integer,  db.ForeignKey("sd41_schedule_groups.id"),
+    schedule_id = db.Column(db.Integer,  db.ForeignKey("sd42_schedule.id"),
                             comment="Schedule id, null means no schedule")
 
     devices = db.relationship("sdDevice", backref="device_group", lazy="dynamic")
-    commands = db.relationship("sdCommandDevice", backref="device_group", lazy="dynamic")
 
     __table_args__ = (db.UniqueConstraint("cust_id", "name"),)
 
