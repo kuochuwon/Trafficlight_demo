@@ -24,7 +24,7 @@ def redis_general_add(namespace, data, p=None):
     try:
         if not p:
             p = get_redis_connect()
-        p.set(namespace, json.dumps(data))
+        p.set(namespace, json.dumps(data), ex=__redis_expire)
         p.execute()
         logger.debug(f"Redis new key was set: {namespace}")
     except Exception as e:
