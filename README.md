@@ -14,31 +14,9 @@
 
 * 認證管理 (Auth)
 
-* 指令管理 (Command)
+## 自行設定.env
 
-* 事件管理 (Event)
-
-* 報修管理 (Issue)
-
-* 排程管理 (Schedule)
-
-* 提升效率 (DB_checker、utils)
-
-## 優化方向
-
-* 常用的功能，將回傳值儲存在Redis
-    * 觸發時機: 若Redis namespace為空或超過指定時間
-
-* 容器化
-
-* 引入CICD
-
-* 報表產生
-
-* 告警
-## .env
-
-``` (python)
+```python
 # In development environment
 FLASK_CONFIG=development
 
@@ -52,31 +30,31 @@ DEV_DATABASE_URL=postgresql+psycopg2://<db_user>:<db_pass>@<db_host>:<db_port>/<
 TEST_DATABASE_URL=postgresql+psycopg2://<db_user>:<db_pass>@<db_host>:<db_port>/<db_name>
 
 # Web/JWT key
-WEB_SECRET_KEY=pkJ0-gqfRMfbgLIE9MD.lPIXDv,3cOOYYbdd1w9-YlZObHpwop9OM_hCYlukDS7P
-JWT_SECRET_KEY=nMCqO.5wk5Q-y2BzcskF,kvpl-PbTrKhk4Jta3_vrvbHCzEzHTVU6UqFlbWm2vyZ
+WEB_SECRET_KEY=<your_secret_key>
+JWT_SECRET_KEY=<your_secret_key>
 
-# access token expired in 10 minutes
-JWT_ACCESS_TOKEN_EXPIRES = 10
-# refresh token expired in 1 days
-JWT_REFRESH_TOKEN_EXPIRES = 1
+# access token expired in X minutes
+JWT_ACCESS_TOKEN_EXPIRES = <expire minutes>
+# refresh token expired in X days
+JWT_REFRESH_TOKEN_EXPIRES = <expire days>
 
 # log directory must be created first
 LOG_FILE=log/lighting.log
 
 # MQTT setting for publish module, mainly offer for command api.
 MQTT_CLIENT_ID = <client_id>
-MQTT_ALIVE = 10
+MQTT_ALIVE = <alive seconds>
 MQTT_SERVER = <server_host>
 MQTT_PORT = <port_number>
 
 # If publish topic of command change, gateway command need change too.
-MQTT_PUBLISH_TOPIC = traffic_light/dev/command/
+MQTT_PUBLISH_TOPIC = main_path/sub_path1/subpath2/...
 MQTT_QOS = 0
 ```
 
 ## Build
 
-```shell=
+```python
 python -m venv venv
 
 # windows
@@ -86,7 +64,7 @@ python -m venv venv
 source venv/bin/activate
 ```
 
-```shell=
+```python
 python -m pip install pip --upgrade
 python -m pip install setuptools --upgrade
 pip install flake8
@@ -98,26 +76,26 @@ pip install rope
 
 ## Run
 
-``` (python)
+```python
 python manage.py run
 ```
 
 ## Run test
 
-``` (python)
+```python
 python manage.py test
 ```
 
 ## Initial database configuration
 
-``` (python)
+```python
 python manage.py db init
 ```
 
 ## 確認目前使用中的資料庫版本(專案/資料庫)
 ## 同步專案與資料庫的版本資訊(以專案為優先)
 
-``` (python)
+```python
 python manage.py db current
 python manage.py db heads
 python manage.py db stamp heads
@@ -125,33 +103,27 @@ python manage.py db stamp heads
 
 ## Prepare database migration
 
-``` (python)
+```python
 python manage.py db migrate -m "<comment>"
 ```
 
 ## Do database migration
 
-``` (python)
+```python
 python manage.py db upgrade
 ```
 
 ## Undo database migration
 
- ```(python)
+ ```python
 python manage.py db downgrade
 ```
 
 ## Publish initial data
 
-```(python)
+```python
 python manage.py seed
 ```
-
-## 關於帳號資訊
-cust_id = 2
-* custname: nctu
-* username: Zack
-* password: 1234qwer
 
 ## check_access_authority的運作原理
 * 先取得user的資訊，根據user id找出user所屬的user group
