@@ -16,7 +16,7 @@ from app.main.view.device_response import (response_add_device,
                                            response_get_detail,
                                            response_update_device)
 from app.main.util.redis_handler import (redis_general_add, redis_general_get)
-
+from app.main.log import logger
 
 api = GetAllDeviceDto.api
 _header = GetAllDeviceDto.header
@@ -58,6 +58,7 @@ class GetAll(Resource):
             response = get_geojson_from_sql_results(data)
             redis_general_add(namespace, response)
         else:
+            logger.info(f"get all devices using cache: {namespace}")
             response = cache
 
         if not response:

@@ -18,8 +18,8 @@ def search_cust(cust_name):
     return sdCustomer.search_by_name(cust_name)
 
 
-def search_user(cust_id, cust_name):
-    return sdUser.search(cust_id, cust_name)
+def search_user(cust_id, user_name):
+    return sdUser.search(cust_id, user_name)
 
 
 def generate_user_tokens(cust_id, user_id, user_name):

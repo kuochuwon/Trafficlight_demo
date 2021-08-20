@@ -1,5 +1,5 @@
 import json
-import functools
+from functools import wraps
 from flask import request
 from flask_api import status
 from flask_jwt_extended import get_jwt_identity
@@ -53,7 +53,7 @@ def auth_verify(cust_id):
 
 
 def api_exception_handler(function):
-    @functools.wraps(function)
+    @wraps(function)
     def wrapper(*args, **kwargs):
         try:
             return function(*args, **kwargs)

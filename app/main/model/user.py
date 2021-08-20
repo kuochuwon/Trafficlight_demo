@@ -60,7 +60,7 @@ class sdUser(db.Model):
         obj.comment = comment
         return obj
 
-    # delete_all_user_groups: delete all user groups record corresponding to the user from m2m table
+    # HINT delete_all_user_groups: delete all user groups record corresponding to the user from m2m table
     @staticmethod
     def delete_all_user_groups(cust_id, user_list):
         users = db.session.query(sdUser).filter(sdUser.cust_id == cust_id, sdUser.id.in_(user_list)).all()
@@ -76,13 +76,14 @@ class sdUser(db.Model):
     def update(cust_id, user_id, name, display_name, password, email, telephone, comment):
         obj = db.session.query(sdUser).filter(sdUser.id == user_id).first()
         if obj:
-            if password:
-                obj.password = password
-            obj.name = name
-            obj.display_name = display_name
-            obj.email = email
-            obj.telephone = telephone
-            obj.comment = comment
+            # HINT This method has too much if/else,
+            # here should handle by Frontend, or use this method
+            obj.password = password if password else obj.password
+            obj.name = name if name else obj.name
+            obj.display_name = display_name if display_name else obj.display_name
+            obj.email = email if email else obj.email
+            obj.telephone = telephone if telephone else obj.telephone
+            obj.comment = comment if comment else obj.comment
 
         else:
             obj = sdUser()

@@ -80,9 +80,9 @@ class sdUserGroup(db.Model):
     @staticmethod
     def update(cust_id, group_id, new_name, new_display_name, new_comment):
         obj = db.session.query(sdUserGroup).filter(sdUserGroup.cust_id == cust_id, sdUserGroup.id == group_id).first()
-        obj.name = new_name
-        obj.display_name = new_display_name
-        obj.comment = new_comment
+        obj.name = new_name if new_name else obj.name
+        obj.display_name = new_display_name if new_display_name else obj.display_name
+        obj.comment = new_comment if new_comment else obj.comment
         return obj
 
     # user join user group
