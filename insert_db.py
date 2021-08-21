@@ -46,7 +46,7 @@ def insert_device_by_template():
                                                    "cust_id": cust_id,
                                                    "wgs_x": wgs_x,
                                                    "wgs_y": wgs_y})
-            logger.info(f"current template: {device_obj}")
+            logger.info(f"current template: {device_obj[1]}")
         db.session.commit()
 
 

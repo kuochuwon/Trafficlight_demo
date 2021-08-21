@@ -14,7 +14,7 @@ jwt = JWTManager()
 
 def create_app(config_name):
     logname = Config.LOG_FILE
-    logger.addHandler(get_handler("log/server.log"))
+    logger.addHandler(get_handler(logname))
     app = Flask(__name__)
     app.config.from_object(get_config(config_name))
     db.init_app(app)
