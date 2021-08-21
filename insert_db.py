@@ -1,7 +1,14 @@
 import os
-from app.main import db, create_app
-from sqlalchemy.sql import text
-from random import random
+from dotenv import load_dotenv
+base_dir = os.path.abspath(os.path.dirname(__file__))
+dotenv_path = os.path.join(base_dir, ".env")
+load_dotenv(dotenv_path=dotenv_path)
+
+from app.main import db, create_app  # noqa
+from random import random  # noqa
+from app.main.log import logger  # noqa
+
+
 get_device_template = """
     SELECT * FROM sd21_devices WHERE dev_type = 1
 """
@@ -9,6 +16,7 @@ get_device_template = """
 insert_device = """
     INSERT INTO sd21_devices ("name", display_name, "comment", dev_type, cust_id,  wgs_x, wgs_y)
     VALUES (:name, :display_name, :comment, :dev_type, :cust_id, :wgs_x, :wgs_y)
+    ON CONFLICT DO NOTHING
 """
 
 
@@ -38,6 +46,7 @@ def insert_device_by_template():
                                                    "cust_id": cust_id,
                                                    "wgs_x": wgs_x,
                                                    "wgs_y": wgs_y})
+            logger.info(f"current template: {device_obj}")
         db.session.commit()
 
 
