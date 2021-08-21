@@ -24,7 +24,7 @@ class Config:
     # REDIS_PORT = ""
     # REDIS_PASS = ""
 
-    filename = os.getenv("LOG_FILE") or "log/default_server.log"
+    filename = os.getenv("LOG_FILE") or "server_default"
     LOG_FILE = Path(Path.cwd(), "log", f"{filename}.log")
     path = LOG_FILE.parent
     if not (path.exists() and path.is_dir()):
