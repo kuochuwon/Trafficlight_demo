@@ -46,8 +46,6 @@ class GetAll(Resource):
         payload = request.json
         user_name, device_number = get_cust_user_device(payload)
 
-        # print(help('modules'))
-
         # using redis to enhance efficiency
         namespace = f"traffic_light:device:getall:{cust_id}"
         cache = redis_general_get(namespace)
@@ -56,6 +54,7 @@ class GetAll(Resource):
                                                  user_name,
                                                  device_number)
             response = get_geojson_from_sql_results(data)
+            logger.info(f"cache not found, query from database...")
             redis_general_add(namespace, response)
         else:
             logger.info(f"get all devices using cache: {namespace}")
@@ -63,6 +62,7 @@ class GetAll(Resource):
 
         if not response:
             raise NotFound(ret.http_resp(ret.RET_NOT_FOUND))
+
         return ret.http_resp(ret.RET_OK, extra=response), status.HTTP_200_OK
 
 

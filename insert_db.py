@@ -27,10 +27,13 @@ def insert_device_by_template():
     app.app_context().push()
     with app.app_context():
         template_device = db.session.execute(get_device_template).fetchall()
+        num = 30000
         for device_obj in template_device:
-            for i in range(10):
-                num = int(random()*10000)
+            for _ in range(10000):
+                # num = int(random()*10000)
+
                 name = f"DEV_{num}"
+                num += 1
                 wgs_x = device_obj[-3]
                 wgs_y = device_obj[-2]
                 address = device_obj[-1]
